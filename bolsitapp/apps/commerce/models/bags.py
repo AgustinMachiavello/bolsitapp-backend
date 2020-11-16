@@ -21,7 +21,7 @@ class Bag(models.Model):
   bag_type = models.CharField(
     "Type", max_length = 1, choices = TYPE, null = False)
   
-  user = models.ForeignKey(User, on_delete = models.RESTRICT)
+  user = models.ForeignKey(User, on_delete = models.RESTRICT, related_name='user')
 
   class Meta:
     verbose_name = "Bag"

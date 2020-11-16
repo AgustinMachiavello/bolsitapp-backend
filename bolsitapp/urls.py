@@ -20,4 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(
         ('bolsitapp.apps.accounts.urls', 'users'), namespace='users')),
+    path('', include(
+        ('bolsitapp.apps.commerce.urls', 'commerce'), namespace='commerce')),
 ]
