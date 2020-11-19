@@ -18,3 +18,10 @@ class Purchase(models.Model):
   
   bag = models.ForeignKey(Bag, on_delete = models.RESTRICT)
   store_branch = models.ForeignKey(Branch, on_delete = models.RESTRICT)
+
+  def __str__(self):
+    return '#{0} | {1}'.format(self.id_purchase, self.store_branch.store.name)
+
+  class Meta:
+    verbose_name = "Purchase"
+    verbose_name_plural = "Purchases"

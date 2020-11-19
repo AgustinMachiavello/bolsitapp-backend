@@ -7,11 +7,6 @@ class BagSerializer(serializers.ModelSerializer):
         model = Bag
         fields = ('__all__')
 
-class BranchSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Branch
-        fields = ('__all__')
-
 class ExchangeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Exchange
@@ -26,3 +21,9 @@ class StoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Store
         fields = ('__all__')
+
+class BranchSerializer(serializers.ModelSerializer):
+    mainStore = StoreSerializer(read_only=True, source='store')
+    class Meta:
+        model = Branch
+        exclude = []

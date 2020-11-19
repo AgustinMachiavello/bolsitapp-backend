@@ -20,9 +20,12 @@ class Bag(models.Model):
     "Date Discarded")
   bag_type = models.CharField(
     "Type", max_length = 1, choices = TYPE, null = False)
+  name = models.CharField("Bag name", max_length = 30, null = True, blank = True)
+  user = models.ForeignKey(User, on_delete = models.PROTECT, null = True, blank = True, related_name='user')
   
-  user = models.ForeignKey(User, on_delete = models.RESTRICT, related_name='user')
-
+  def __str__(self):
+    return '#{0} | {1}'.format(self.id_bag, self.qr_code)
+  
   class Meta:
     verbose_name = "Bag"
     verbose_name_plural = "Bags"

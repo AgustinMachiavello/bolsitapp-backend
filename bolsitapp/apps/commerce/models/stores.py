@@ -16,7 +16,10 @@ class Store(models.Model):
     "Name", max_length = 20, editable = True, null = False)
   category = models.CharField(
     "Category", max_length = 20, choices = CATEGORY, editable = True, null = False)
-  
+
+  def __str__(self):
+    return '#{0} {1}'.format(self.id_store, self.name)
+
   class Meta:
     verbose_name = "Store"
     verbose_name_plural = "Stores"

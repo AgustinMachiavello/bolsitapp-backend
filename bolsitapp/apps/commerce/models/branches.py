@@ -11,8 +11,16 @@ class Branch(models.Model):
     "Address", max_length = 50, editable = True, null = False)
   #location = models.PointField(
   #  "Location", null = False)
-  
-  store = models.ForeignKey(Store, on_delete = models.RESTRICT)
+  latitude = models.FloatField("Latitude", null = False)
+  longitude = models.FloatField("Longitude", null = False)
+  store = models.ForeignKey(Store, on_delete = models.RESTRICT, related_name='store')
+  imageURL = models.URLField("imageURL", null = True)
+  openTime = models.TimeField("Open time", null = True)
+  closeTime = models.TimeField("Close time", null = True)
+  description = models.CharField("Description", max_length=100, null = True)
+
+  def __str__(self):
+    return '#{0} | Store: {1}'.format(self.id_branch, self.store.name)
 
   class Meta:
     verbose_name = "Branch"
